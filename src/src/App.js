@@ -1,32 +1,17 @@
 import * as React from 'react';
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export default function HorizontalCentering() {
+export default function TextAlignment() {
   return (
-    <div>
-      <Box
-        sx={{
-          mx: 'auto',
-          //ml:"auto",
-          //mr:"auto",
-          width: 200,
-          p: 1,
-          my: 1,
-          bgcolor: (theme) =>
-            theme.palette.mode === 'dark' ? '#101010' : 'grey.50',
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          border: '1px solid',
-          borderColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
-          borderRadius: 2,
-          textAlign: 'center',
-          fontSize: '0.875rem',
-          fontWeight: '700',
-        }}
-      >
-        Centered element
+    <Typography component="div">
+      <Box sx={{ textAlign: 'justify', m: 1 }}>
+        Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet
+        fermentum. Donec sed odio operae, eu vulputate felis rhoncus.
       </Box>
-    </div>
+      <Box sx={{ textAlign: 'left', m: 1 }}>Left aligned text.</Box>
+      <Box sx={{ textAlign: 'center', m: 1 }}>Center aligned text.</Box>
+      <Box sx={{ textAlign: 'right', m: 1 }}>Right aligned text.</Box>
+    </Typography>
   );
 }
