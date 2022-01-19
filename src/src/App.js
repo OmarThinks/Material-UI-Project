@@ -1,49 +1,38 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 
-function Item(props) {
-  const { sx, ...other } = props;
+export default function GridTemplateAreas() {
   return (
     <Box
       sx={{
-        p: 1,
-        m: 1,
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
-        color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
-        border: '1px solid',
-        borderColor: (theme) =>
-          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
-        borderRadius: 2,
-        fontSize: '0.875rem',
-        fontWeight: '700',
-        ...sx,
+        width: '100%',
+        //height: '140px',
+        minHeight:"100%",
+        color: '#fff',
+        '& > .MuiBox-root > .MuiBox-root': {
+          p: 1,
+          borderRadius: 2,
+          fontSize: '0.875rem',
+          fontWeight: '700',
+        },
       }}
-      {...other}
-    />
-  );
-}
-
-Item.propTypes = {
-  sx: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
-    ),
-    PropTypes.func,
-    PropTypes.object,
-  ]),
-};
-
-export default function FlexGrow() {
-  return (
-    <div style={{ width: '100%' }}>
+    >
       <Box
-        sx={{ display: 'flex', p: 1, bgcolor: 'background.paper', borderRadius: 1 }}
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 1,
+          gridTemplateRows: 'auto',
+          gridTemplateAreas: `"header header header header"
+        "main main . sidebar"
+        "footer footer footer footer"`,
+        }}
       >
-        <Item sx={{ flexGrow: 1 }}>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
+        <Box sx={{ gridArea: 'header', bgcolor: 'primary.main' }}>Header</Box>
+        <Box sx={{ gridArea: 'main', bgcolor: 'secondary.main', flexGrow:1, display:"flex" }}>Main</Box>
+        <Box sx={{ gridArea: 'sidebar', bgcolor: 'error.main' }}>Sidebar</Box>
+        <Box sx={{ gridArea: 'footer', bgcolor: 'warning.dark' }}>Footer</Box>
       </Box>
-    </div>
+    </Box>
   );
 }
