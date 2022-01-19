@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Box, ThemeProvider, createTheme } from '@mui/system';
+import { ThemeProvider, createTheme } from '@mui/system';
+
+import Box from '@mui/material/Box';
 
 
 
@@ -9,6 +11,21 @@ import { Box, ThemeProvider, createTheme } from '@mui/system';
 
 
 
+
+/*function BorderColor() {
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ ...commonStyles2, borderColor: 'primary.main' }} />
+      <Box sx={{ ...commonStyles2, borderColor: 'secondary.main' }} />
+      <Box sx={{ ...commonStyles2, borderColor: 'error.main' }} />
+      <Box sx={{ ...commonStyles2, borderColor: 'grey.500' }} />
+      <Box sx={{ ...commonStyles2, borderColor: 'text.primary' }} />
+    </Box>
+  );
+}
+
+
+*/
 
 
 
@@ -67,13 +84,50 @@ function Example() {
 
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
 
+  const commonStyles = {
+    bgcolor: 'background.paper',
+    borderColor: 'text.primary',
+    border: 12,
+    width: '5rem',
+    height: '5rem',
+    borderWidth:12,
+  };
+
+  const commonStyles2 = {
+    bgcolor: 'background.paper',
+    border: 12,
+    width: '5rem',
+    height: '5rem',
+  };
   
-  <Example />
-  
+  return (
+    <>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box 
+      
+      //borderColor={"red"}
+
+      sx={{ borderColor:"red", ...commonStyles, 
+        width:"5rem", height:"5rem", border:1,
+        borderRadius: '50%', borderWidth:6, borderColor:"red" }} 
+      />
+      <Box sx={{ ...commonStyles2, borderRadius: '50%', borderWidth:6, borderColor:"red" }} />
+    </Box>
+
+    <ThemeProvider theme={theme}>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Example />
+
+      <Box sx={{ ...commonStyles, borderRadius: '50%', borderWidth:6, borderColor:"#F11" }} />
+      <Box sx={{ ...commonStyles, borderRadius: 1 }} />
+      <Box sx={{ ...commonStyles, borderRadius: '16px', borderColor:"blue" }} />
+
+
+    </Box>  
   </ThemeProvider>
+  </>
+
   );
 }
 
