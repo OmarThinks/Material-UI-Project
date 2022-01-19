@@ -1,136 +1,49 @@
 import * as React from 'react';
-import { ThemeProvider, createTheme } from '@mui/system';
-
+import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 
-
-
-
-
-
-
-
-
-
-/*function BorderColor() {
+function Item(props) {
+  const { sx, ...other } = props;
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Box sx={{ ...commonStyles2, borderColor: 'primary.main' }} />
-      <Box sx={{ ...commonStyles2, borderColor: 'secondary.main' }} />
-      <Box sx={{ ...commonStyles2, borderColor: 'error.main' }} />
-      <Box sx={{ ...commonStyles2, borderColor: 'grey.500' }} />
-      <Box sx={{ ...commonStyles2, borderColor: 'text.primary' }} />
-    </Box>
+    <Box
+      sx={{
+        p: 1,
+        m: 1,
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : 'grey.100'),
+        color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
+        border: '1px solid',
+        borderColor: (theme) =>
+          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+        borderRadius: 2,
+        fontSize: '0.875rem',
+        fontWeight: '700',
+        ...sx,
+      }}
+      {...other}
+    />
   );
 }
 
+Item.propTypes = {
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+};
 
-*/
-
-
-
-const theme = createTheme({
-  palette: {
-    background: {
-      paper: '#fff',
-    },
-    text: {
-      primary: '#173A5E',
-      secondary: '#46505A',
-    },
-    action: {
-      active: '#001E3C',
-    },
-    success: {
-      dark: '#009688',
-    },
-  },
-});
-
-function Example() {
+export default function FlexGrow() {
   return (
+    <div style={{ width: '100%' }}>
       <Box
-        sx={{
-          bgcolor: 'background.paper',
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-        }}
+        sx={{ display: 'flex', p: 1, bgcolor: 'background.paper', borderRadius: 1 }}
       >
-        <Box sx={{ color: 'text.secondary' }}>Sessions</Box>
-        <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
-          98.3 K
-        </Box>
-        <Box
-          sx={{
-            color: 'success.dark',
-            display: 'inline',
-            fontWeight: 'bold',
-            mx: 0.5,
-            fontSize: 14,
-          }}
-        >
-          +18.77%
-        </Box>
-        <Box sx={{ color: 'text.secondary', display: 'inline', fontSize: 14 }}>
-          vs. last week
-        </Box>
+        <Item sx={{ flexGrow: 1 }}>Item 1</Item>
+        <Item>Item 2</Item>
+        <Item>Item 3</Item>
       </Box>
+    </div>
   );
 }
-
-
-
-
-function App() {
-
-  const commonStyles = {
-    bgcolor: 'background.paper',
-    borderColor: 'text.primary',
-    border: 12,
-    width: '5rem',
-    height: '5rem',
-    borderWidth:12,
-  };
-
-  const commonStyles2 = {
-    bgcolor: 'background.paper',
-    border: 12,
-    width: '5rem',
-    height: '5rem',
-  };
-  
-  return (
-    <>
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Box 
-      
-      //borderColor={"red"}
-
-      sx={{ borderColor:"red", ...commonStyles, 
-        width:"5rem", height:"5rem", border:1,
-        borderRadius: '50%', borderWidth:6, borderColor:"red" }} 
-      />
-      <Box sx={{ ...commonStyles2, borderRadius: '50%', borderWidth:6, borderColor:"red" }} />
-    </Box>
-
-    <ThemeProvider theme={theme}>
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-    <Example />
-
-      <Box sx={{ ...commonStyles, borderRadius: '50%', borderWidth:6, borderColor:"#F11" }} />
-      <Box sx={{ ...commonStyles, borderRadius: 1 }} />
-      <Box sx={{ ...commonStyles, borderRadius: '16px', borderColor:"blue" }} />
-
-
-    </Box>  
-  </ThemeProvider>
-  </>
-
-  );
-}
-
-
-
-export default App;
