@@ -1,17 +1,19 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import styled, { ThemeProvider } from 'styled-components';
+import { unstable_styleFunctionSx } from '@mui/system';
+import NoSsr from '@mui/base/NoSsr';
+import { createTheme } from '@mui/material/styles';
 
-export default function TextAlignment() {
+const theme = createTheme();
+
+const Div = styled('div')(unstable_styleFunctionSx);
+
+export default function StyleFunctionSxDemo() {
   return (
-    <Typography component="div">
-      <Box sx={{ textAlign: 'justify', m: 1 }}>
-        Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet
-        fermentum. Donec sed odio operae, eu vulputate felis rhoncus.
-      </Box>
-      <Box sx={{ textAlign: 'left', m: 1 }}>Left aligned text.</Box>
-      <Box sx={{ textAlign: 'center', m: 1 }}>Center aligned text.</Box>
-      <Box sx={{ textAlign: 'right', m: 1 }}>Right aligned text.</Box>
-    </Typography>
+    <NoSsr>
+      <ThemeProvider theme={theme}>
+        <Div sx={{ m: 1, p: 1, border: 1 }}>Custom component using the system</Div>
+      </ThemeProvider>
+    </NoSsr>
   );
 }
