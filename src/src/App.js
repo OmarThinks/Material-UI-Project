@@ -1,51 +1,62 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
-function Item(props) {
-  const { sx, ...other } = props;
+export default function BackgroundColor() {
   return (
-    <Box
-      sx={{
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-        color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
-        border: '1px solid',
-        borderColor: (theme) =>
-          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
-        p: 1,
-        borderRadius: 2,
-        fontSize: '0.875rem',
-        fontWeight: '700',
-        ...sx,
-      }}
-      {...other}
-    />
+    <Grid container spacing={1}>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'primary.main', color: 'primary.contrastText', p: 2 }}>
+          primary.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box
+          sx={{
+            bgcolor: 'secondary.main',
+            color: 'secondary.contrastText',
+            p: 2,
+          }}
+        >
+          secondary.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'error.main', color: 'error.contrastText', p: 2 }}>
+          error.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'warning.main', color: 'warning.contrastText', p: 2 }}>
+          warning.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'info.main', color: 'info.contrastText', p: 2 }}>
+          info.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'success.main', color: 'success.contrastText', p: 2 }}>
+          success.main
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'text.primary', color: 'background.paper', p: 2 }}>
+          text.primary
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'text.secondary', color: 'background.paper', p: 2 }}>
+          text.secondary
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Box sx={{ bgcolor: 'text.disabled', color: 'background.paper', p: 2 }}>
+          text.disabled
+        </Box>
+      </Grid>
+    </Grid>
   );
 }
 
-Item.propTypes = {
-  sx: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
-    ),
-    PropTypes.func,
-    PropTypes.object,
-  ]),
-};
-
-export default function GridAutoColumns() {
-  return (
-    <div style={{ width: '100%' }}>
-      <Box
-        sx={{
-          display: 'grid',
-          gridAutoColumns: '1fr',
-          gap: 1,
-        }}
-      >
-        <Item sx={{ gridRow: '1', gridColumn: 'span 2' }}>span 2</Item>
-        <Item sx={{ gridRow: '1', gridColumn: '4 / 5' }}>4 / 5</Item>
-      </Box>
-    </div>
-  );
-}
