@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 export default function BoxSx() {
   return (
     <Box
-    //component="span"
+    component="button"
       sx={{
         width: 300,
         height: 300,
@@ -12,6 +12,7 @@ export default function BoxSx() {
         '&:hover': {
           backgroundColor: 'red',
           opacity: [0.9, 0.8, 0.7],
+          
         },
       }}
     >Hello
