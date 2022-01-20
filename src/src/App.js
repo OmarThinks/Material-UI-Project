@@ -1,19 +1,29 @@
 import * as React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import { unstable_styleFunctionSx } from '@mui/system';
-import NoSsr from '@mui/base/NoSsr';
-import { createTheme } from '@mui/material/styles';
+import { Box, ThemeProvider } from '@mui/system';
 
-const theme = createTheme();
-
-const Div = styled('div')(unstable_styleFunctionSx);
-
-export default function StyleFunctionSxDemo() {
+export default function BoxSx() {
   return (
-    <NoSsr>
-      <ThemeProvider theme={theme}>
-        <Div sx={{ m: 1, p: 1, border: 1 }}>Custom component using the system</Div>
-      </ThemeProvider>
-    </NoSsr>
+    <ThemeProvider
+      theme={{
+        palette: {
+          primary: {
+            main: '#007FFF',
+            dark: '#0059B2',
+          },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          width: 300,
+          height: 300,
+          bgcolor: 'primary.main',
+          '&:hover': {
+            backgroundColor: 'primary.dark',
+            opacity: [0.9, 0.8, 0.7],
+          },
+        }}
+      />
+    </ThemeProvider>
   );
 }
