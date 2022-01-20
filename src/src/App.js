@@ -1,29 +1,14 @@
 import * as React from 'react';
-import { Box, ThemeProvider } from '@mui/system';
+import { Routes, Route, Link } from "react-router-dom";
 
-export default function BoxSx() {
+
+function App() {
   return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          primary: {
-            main: '#007FFF',
-            dark: '#0059B2',
-          },
-        },
-      }}
-    >
-      <Box
-        sx={{
-          width: 300,
-          height: 300,
-          bgcolor: 'primary.main',
-          '&:hover': {
-            backgroundColor: 'primary.dark',
-            opacity: [0.9, 0.8, 0.7],
-          },
-        }}
-      />
-    </ThemeProvider>
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="about" element={<About />} />
+  </Routes>
   );
 }
+
+export default App;
