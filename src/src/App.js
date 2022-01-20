@@ -1,43 +1,28 @@
 import * as React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 
+
+import Box01 from './Lessons/F_Layout/01)Box/01';
+
 function Home() {
   return (
     <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
+      <h1>F) Layout:</h1>
+      <h2>F-1) Boxes:</h2>
       <nav>
-        <Link to="/about">About</Link>
+        <Link to="/f-1-1">F-1-1: MainBox</Link>
       </nav>
     </>
   );
 }
 
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>
-          That feels like an existential question, don't you
-          think?
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
 
 
 function App() {
   return (
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="about" element={<About />} />
+    <Route path="/f-1-1" element={<Box01 />} />
   </Routes>
   );
 }
